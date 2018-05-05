@@ -18,7 +18,7 @@ export default class PageBody extends React.Component {
         let news = response.data;
         this.setState({ headlines: news });
         this.setState({ newsElements: this.state.headlines.articles.map((article, index) => <li key={'news_' + index}>{article.title}</li>) });
-        this.setState({ isLoading: false })
+        this.setState({ isLoading: false });
       });
   }
 
