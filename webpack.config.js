@@ -3,6 +3,7 @@
 const debug = process.env.NODE_ENV !== "production";
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   context: path.join(__dirname, "src"),
@@ -19,9 +20,36 @@ module.exports = {
           plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
         }
       },
+      // {
+      //   test: /\.css$/,
+      //   loader: 'style-loader',
+      //   include: [
+      //     path.resolve(__dirname, "src")
+      //   ]
+      // },
+      // {
+      //   test: /\.css$/,
+      //   loader: 'css-loader',
+      //   include: [
+      //     path.resolve(__dirname, "src")
+      //   ],
+      //   query: {
+      //     modules: true,
+      //     localIdentName: '[name]__[local]___[hash:base64:5]'
+      //   }
+      // }
       {
-        test: /\.css$/,
-        loaders: ['style-loader', 'css-loader']
+        test: /\.css/,
+        loaders: ExtractTextPlugin.extract({
+          loader: 'css-loader',
+          query: {
+            modules: true,
+            localIdentName: '[name]__[local]___[hash:base64:5]'
+          }
+        }),
+        include: [
+          path.resolve(__dirname, 'src')
+        ]
       }
     ]
   },
@@ -29,9 +57,10 @@ module.exports = {
     path: __dirname + "/dist/",
     filename: "client.min.js"
   },
-  plugins: debug ? [] : [
+  plugins: debug ? [new ExtractTextPlugin('styles.css')] : [
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new ExtractTextPlugin('styles.css'),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
   ],
 };

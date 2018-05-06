@@ -1,5 +1,6 @@
 import React from "react";
 import Headlines from "../headlines";
+import styles from './index.css';
 export default class PageBody extends React.Component {
   constructor(props) {
     super(props);
