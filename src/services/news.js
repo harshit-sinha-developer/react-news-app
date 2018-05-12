@@ -4,15 +4,28 @@ import { NEWS_API_KEY } from '../config/constants';
 
 export default class NewsService {
   constructor() {
-
   }
 
-  fetchMockHeadlines() {
+  static fetchMockHeadlines() {
     return axios('/mocks/mockNews.json')
       .then(result => result.data);
   }
 
-  fetchTopHeadlines(options) {
+  static searchNews(options) {
+    options = options || {};
+    options.language = options.language || 'en';
+    const requestOpts = {
+      url: SERVICES.NEWS.SEARCH,
+      params: options,
+      headers: {
+        Authorization: `Bearer ${NEWS_API_KEY}`
+      }
+    };
+    console.log(requestOpts)
+    return axios(requestOpts);
+  }
+
+  static fetchTopHeadlines(options) {
     options = options || {};
     options.country = options.country || 'in';
     const requestOpts = {
@@ -23,6 +36,9 @@ export default class NewsService {
       }
     };
 
-    return axios(requestOpts);
+    return axios(requestOpts)
+      .then(results => {
+        return Promise.resolve(results);
+      })
   }
 }

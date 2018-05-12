@@ -1,2 +1,20 @@
+.newsCard__news_card___3ZKY6 {
+  margin-top: 20px;
+  border-style: outset;
+  border-width: 1px;
+  border-color: gray;
+}
 
+.newsCard__news_card___3ZKY6:hover {
+  border-color: blue;
+}
+
+.newsCard__news_card___3ZKY6 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.newsCard__news_card___3ZKY6 .newsCard__card-title___1dh7q:hover {
+  color: cornflowerblue;
+}
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

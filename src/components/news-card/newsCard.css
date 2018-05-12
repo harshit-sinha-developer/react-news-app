@@ -1,0 +1,19 @@
+.news_card {
+  margin-top: 20px;
+  border-style: outset;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.news_card:hover {
+  border-color: blue;
+}
+
+.news_card a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.news_card .card-title:hover {
+  color: cornflowerblue;
+}

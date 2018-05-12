@@ -20,24 +20,6 @@ module.exports = {
           plugins: ['react-html-attrs', 'transform-decorators-legacy', 'transform-class-properties'],
         }
       },
-      // {
-      //   test: /\.css$/,
-      //   loader: 'style-loader',
-      //   include: [
-      //     path.resolve(__dirname, "src")
-      //   ]
-      // },
-      // {
-      //   test: /\.css$/,
-      //   loader: 'css-loader',
-      //   include: [
-      //     path.resolve(__dirname, "src")
-      //   ],
-      //   query: {
-      //     modules: true,
-      //     localIdentName: '[name]__[local]___[hash:base64:5]'
-      //   }
-      // }
       {
         test: /\.css/,
         loaders: ExtractTextPlugin.extract({
