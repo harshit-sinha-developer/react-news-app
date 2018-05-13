@@ -3,7 +3,7 @@ import PubSub from "pubsub-js";
 
 import NewsPanel from "../news-panel/newsPanel.component";
 import Sidebar from "../sidebar/sidebar.component";
-import { LINK_EVENT_NAME } from "../sidebar/sidebar.component";
+import { LINK_EVENT_NAME } from "../sidebar/sidebar.props";
 import NewsService from "../../services/news";
 
 
@@ -19,12 +19,18 @@ export default class MainPage extends React.Component {
 
   componentDidMount() {
     this.fetchHeadlinesAndRender();
-    PubSub.subscribe(LINK_EVENT_NAME, this.sideBarLinkClicked.bind(this));
+    this.sideBarSubsription = PubSub.subscribe(LINK_EVENT_NAME, this.sideBarLinkClicked.bind(this));
+  }
+
+  componentWillUnmount() {
+    if(this.sideBarSubsription) {
+      PubSub.unsubscribe(this.sideBarSubsription);
+    }
   }
 
   sideBarLinkClicked(message, data) {
     let options = {};
-    if (data && Object.keys(data).length > 0) {
+    if (data) {
       this.setState({ newsPanelLoading: true, newsData: [] })
       this.fetchHeadlinesAndRender(data);
     }

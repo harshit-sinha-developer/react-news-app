@@ -26,6 +26,7 @@ export default class NewsService {
 
   static fetchTopHeadlines(options) {
     options = options || {};
+    options.language = options.language || 'en';
     const requestOpts = {
       url: SERVICES.NEWS.HEADLINES,
       params: options,

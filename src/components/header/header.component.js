@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import { HEADER_LINKS, SITE_TITLE } from "./headerLinks";
+import { HEADER_LINKS, SITE_TITLE } from "./header.props";
 
 export default class Header extends React.Component {
   constructor(props) {
