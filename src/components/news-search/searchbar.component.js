@@ -1,6 +1,8 @@
 import React from "react";
 import PubSub from "pubsub-js";
+
 import Utils from "../../services/util";
+import { KEYCODES, EVENTS } from "../../config/constants";
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -11,7 +13,11 @@ export default class SearchBar extends React.Component {
     this.searchClicked = this.searchClicked.bind(this);
   }
 
-  searchClicked() {
+  searchClicked(event) {
+    // SEARCH if enter pressed
+    if (event.type == EVENTS.KEYUP.name && event.keyCode != KEYCODES.ENTER) {
+      return false;
+    }
     let searchInputElement = document.getElementById('search_' + this.searchKey);
     let searchText = searchInputElement.value;
     if (searchText && searchText.length > 0) {
@@ -22,7 +28,7 @@ export default class SearchBar extends React.Component {
   render() {
     return (
       <div className='input-group md-form form-sm form-2 pl-0'>
-        <input className='form-control my-0 py-1 amber-border' id={'search_' + this.searchKey} type="text" placeholder="Search" aria-label="Search" />
+        <input className='form-control my-0 py-1 amber-border' id={'search_' + this.searchKey} type="text" placeholder="Search" aria-label="Search" onKeyUp={this.searchClicked} />
         <div className='input-group-append'>
           <span className='input-group-text amber lighten-3' id="basic-text1" onClick={this.searchClicked}>
             <i className='fa fa-search text-grey' aria-hidden="true"></i>

@@ -10,7 +10,7 @@ module.exports = {
   devtool: debug ? "inline-sourcemap" : false,
   entry: "./app.js",
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
@@ -45,4 +45,10 @@ module.exports = {
     new ExtractTextPlugin('styles.css'),
     new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
   ],
+  devServer: {
+    port: 8080,
+    historyApiFallback: {
+      index: 'index.html'
+    }
+  }
 };

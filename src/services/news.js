@@ -21,13 +21,11 @@ export default class NewsService {
         Authorization: `Bearer ${NEWS_API_KEY}`
       }
     };
-    console.log(requestOpts)
     return axios(requestOpts);
   }
 
   static fetchTopHeadlines(options) {
     options = options || {};
-    options.country = options.country || 'in';
     const requestOpts = {
       url: SERVICES.NEWS.HEADLINES,
       params: options,

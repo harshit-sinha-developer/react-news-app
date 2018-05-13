@@ -11,10 +11,12 @@ export default class NewsSearch extends React.Component {
     super(props);
     this.state = {
       searchResults: [],
-      showNewsPanel: false
+      showNewsPanel: false,
+      newsPanelLoading: true
     };
     this.searchBarId = Utils.generateRandomString(5);
     this.SEARCH_TOPIC = 'SEARCH_BAR_CLICKED_' + this.searchBarId;
+    this.searchPage = 1;
   }
 
   componentDidMount() {
@@ -22,19 +24,18 @@ export default class NewsSearch extends React.Component {
   }
 
   searchBarClicked(msg, data) {
-    console.log(msg, data);
+    this.setState({ showNewsPanel: true })
     NewsService.searchNews({ q: data.text })
       .then(response => {
-        console.log(response);
-        this.setState({ searchResults: response.data, showNewsPanel: true })
-      })
+        this.setState({ searchResults: response.data, newsPanelLoading: false })
+      });
   }
 
   render() {
     return (
       <div className="container">
         <SearchBar searchKey={this.searchBarId} />
-        {this.state.showNewsPanel ? <NewsPanel newsData={this.state.searchResults} isLoading={false}/> : null}
+        {this.state.showNewsPanel ? <NewsPanel newsData={this.state.searchResults} isLoading={this.state.newsPanelLoading} /> : null}
       </div>
     );
   }

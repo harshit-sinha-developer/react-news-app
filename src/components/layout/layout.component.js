@@ -8,10 +8,10 @@ export default class Layout extends React.Component {
   render() {
     return (
       <Router>
-      <div className="container">
-        <Header />
-        <PageBody />
-      </div>
+        <div className="container-fluid">
+          <Header />
+          <PageBody />
+        </div>
       </Router>
     )
   }

@@ -1,0 +1,8 @@
+.sidebar_component {
+  margin-top: 15px;
+  position: fixed
+}
+
+.sidebar_component li.active {
+  background: #dcdcdc;
+}

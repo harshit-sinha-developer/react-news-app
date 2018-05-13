@@ -16,5 +16,12 @@
 
 .newsCard__news_card___3ZKY6 .newsCard__card-title___1dh7q:hover {
   color: cornflowerblue;
+}.sidebar__sidebar_component___3y845 {
+  margin-top: 15px;
+  position: fixed
+}
+
+.sidebar__sidebar_component___3y845 li.sidebar__active___WqS-B {
+  background: #dcdcdc;
 }
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
