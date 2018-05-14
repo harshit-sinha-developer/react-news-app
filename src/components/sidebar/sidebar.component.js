@@ -14,11 +14,10 @@ export default class Sidebar extends React.Component {
     this.linkClicked = this.linkClicked.bind(this);
   }
 
-  linkClicked(event) {
-    let linkElement = event.currentTarget;
-    let groupName = linkElement.getAttribute('data-news-group');
-    let elementName = linkElement.getAttribute('data-news-ele');
-    let uniqueKey = linkElement.getAttribute('data-key');
+  linkClicked(event, { group, element, dataKey }) {
+    let groupName = group;
+    let elementName = element;
+    let uniqueKey = dataKey ;
 
     let groupsObj = SIDEBAR_LINKS.GROUPS;
     let stateObj = {
@@ -62,7 +61,7 @@ export default class Sidebar extends React.Component {
         let elementObj = groupObj.ELEMENTS[element];
 
         let linkElement = (
-          <li className={'nav-item ' + (this.state.activeLinks[group] && (this.state.activeLinks[group].dataKey == elementObj.dataKey) ? styles.active : '')} onClick={this.linkClicked} data-key={elementObj.dataKey} key={'SideEle_' + elementObj.code} data-news-group={group} data-news-ele={element}>
+          <li className={'nav-item ' + (this.state.activeLinks[group] && (this.state.activeLinks[group].dataKey == elementObj.dataKey) ? styles.active : '')} onClick={e => this.linkClicked(e, { group, element, dataKey: elementObj.dataKey })} key={'SideEle_' + elementObj.code}>
             <a class="nav-link" href="#">{elementObj.display}</a>
           </li>
         );
