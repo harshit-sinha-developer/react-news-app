@@ -23,5 +23,10 @@
 
 .sidebar__sidebar_component___3y845 li.sidebar__active___WqS-B {
   background: #dcdcdc;
+}.sourceList__scrollable_menu___cS4ol {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+  max-width: 98%;
 }
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMuY3NzIiwic291cmNlUm9vdCI6IiJ9*/

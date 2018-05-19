@@ -1,6 +1,7 @@
 import React from "react";
-import Utility from "../../services/util";
+import PubSub from "pubsub-js";
 
+import Utility from "../../services/util";
 import NewsCard from "../news-card/newsCard.component";
 import NoResultFound from "../news-search/noResult.component";
 
@@ -9,14 +10,27 @@ export default class NewsPanel extends React.Component {
     super(props);
     this.state = {
       isScrolledDown: false,
-      newsCardsList: []
+      newsCardsList: [],
+      lazyLoadingBottom: false
     }
   }
 
   componentDidMount() {
     document.addEventListener('pageScrolledDown', (event) => {
       this.setState({ isScrolledDown: true });
-    })
+    });
+
+    this.lazyLoadMoreNewsSubscription = PubSub.subscribe(props.LOAD_MORE_NEWS_EVENT, this.lazyLoadMoreNews.bind(this));
+  }
+
+  componentWillUnmount() {
+    if(this.lazyLoadMoreNewsSubscription) {
+      PubSub.unsubscribe(props.LOAD_MORE_NEWS_EVENT, this.lazyLoadMoreNews.bind(this));
+    }
+  }
+
+  lazyLoadMoreNews(message, data) {
+
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -51,7 +65,7 @@ export default class NewsPanel extends React.Component {
       <div className="container-fluid animationload" ref={el => this.headlinesElement = el}>
         <div className={this.props.isLoading ? "osahanloading" : ""}>
           {!this.props.isLoading ? this.state.newsCardsList : null}
-          {this.state.isScrolledDown && this.props.scrollSupport ? <div>Loading</div> : null}
+          {this.props.scrollSupport && this.state.lazyLoadingBottom ? <div>Loading</div> : null}
         </div>
       </div>
     );
