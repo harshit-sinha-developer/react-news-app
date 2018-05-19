@@ -5,13 +5,14 @@ import PubSub from "pubsub-js";
 import MainPage from '../main-page/mainPage.component';
 import NewsSearch from '../news-search/newsSearch.component';
 import SourcePage from '../source-page/sourcePage.component';
-import { PAGE_SCROLLED_BOTTOM_EVENT } from './pageBody.props';
+import { PAGE_SCROLLED_BOTTOM_EVENT, PAGE_SCROLL_WAIT_TIME } from './pageBody.props';
 
 export default class PageBody extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.pageScrolled = this.pageScrolled.bind(this);
+    this.lastScrollTime = null;
   }
 
   componentDidMount() {
@@ -19,12 +20,16 @@ export default class PageBody extends React.Component {
   }
 
   componentWillUnmount() {
+    this.lastScrollTime = null;
     window.removeEventListener('scroll', this.pageScrolled);
   }
 
   pageScrolled() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-      PubSub.publish(PAGE_SCROLLED_BOTTOM_EVENT, {});
+      if(!this.lastScrollTime || Date.now() - this.lastScrollTime >= PAGE_SCROLL_WAIT_TIME) {
+        this.lastScrollTime = Date.now();
+        PubSub.publish(PAGE_SCROLLED_BOTTOM_EVENT, {});
+      }
     }
   }
 

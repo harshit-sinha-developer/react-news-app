@@ -58,4 +58,15 @@ export default class Utility {
     if (!data) return false;
     return (Object.prototype.toString.call(data) === '[object Object]');
   }
+
+  static isNill(data) {
+    if (data == null || data == undefined) return true;
+    return false;
+  }
+
+  static isEmpty(data) {
+    if (data == null || data == undefined) return true;
+    if (Array.isArray(data) || typeof data == 'string') return data.length ? false : true;
+    if (Utility.isObject(data)) return Object.keys(data).length ? false : true;
+  }
 }

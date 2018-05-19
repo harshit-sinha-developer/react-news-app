@@ -15,6 +15,7 @@ export default class SourcePage extends React.Component {
       newsPanelLoading: true
     };
     this.sourceListSubscription = null;
+    this.newsService = new NewsService();
   }
 
   componentDidMount() {
@@ -25,6 +26,7 @@ export default class SourcePage extends React.Component {
     if (this.sourceListSubscription) {
       PubSub.unsubscribe(this.sourceListSubscription);
     }
+    this.newsService = null;
   }
 
   sourceListItemClicked(msg, data) {
@@ -36,9 +38,8 @@ export default class SourcePage extends React.Component {
   fetchHeadlinesAndRender(options) {
     this.setState({ showNewsPanel: true });
 
-    NewsService.fetchTopHeadlines(options)
-      .then(response => {
-        let news = response.data;
+    this.newsService.fetchTopHeadlines(options)
+      .then(news => {
         this.setState({
           newsData: news,
           newsPanelLoading: false
