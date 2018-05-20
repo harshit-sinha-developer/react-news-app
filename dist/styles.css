@@ -1,0 +1,83 @@
+.newsCard__news_card___3ZKY6 {
+  margin-top: 20px;
+  border-style: outset;
+  border-width: 1px;
+  border-color: gray;
+}
+
+.newsCard__news_card___3ZKY6:hover {
+  border-color: blue;
+}
+
+.newsCard__news_card___3ZKY6 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.newsCard__news_card___3ZKY6 .newsCard__card-title___1dh7q:hover {
+  color: cornflowerblue;
+}.loader__spinner___1BT8P {
+  margin: 100px auto;
+  width: 50px;
+  height: 40px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.loader__spinner___1BT8P > div {
+  background-color: #333;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  margin: 0px 1px 0px 1px;
+  -webkit-animation: loader__sk-stretchdelay___3Pwsb 1.2s infinite ease-in-out;
+  animation: loader__sk-stretchdelay___3Pwsb 1.2s infinite ease-in-out;
+}
+
+.loader__spinner___1BT8P .loader__rect2___1NENB {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.loader__spinner___1BT8P .loader__rect3___20id4 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.loader__spinner___1BT8P .loader__rect4___1d8HF {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.loader__spinner___1BT8P .loader__rect5___3UOad {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes loader__sk-stretchdelay___3Pwsb {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes loader__sk-stretchdelay___3Pwsb {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}.sidebar__sidebar_component___3y845 {
+  margin-top: 15px;
+  position: fixed
+}
+
+.sidebar__sidebar_component___3y845 li.sidebar__active___WqS-B {
+  background: #dcdcdc;
+}.sourceList__scrollable_menu___cS4ol {
+  height: auto;
+  max-height: 200px;
+  overflow-x: hidden;
+  max-width: 98%;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZXMuY3NzIiwic291cmNlUm9vdCI6IiJ9*/
