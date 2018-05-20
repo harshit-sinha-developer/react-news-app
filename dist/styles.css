@@ -29,7 +29,7 @@
   height: 100%;
   width: 6px;
   display: inline-block;
-  
+  margin: 0px 1px 0px 1px;
   -webkit-animation: loader__sk-stretchdelay___3Pwsb 1.2s infinite ease-in-out;
   animation: loader__sk-stretchdelay___3Pwsb 1.2s infinite ease-in-out;
 }
