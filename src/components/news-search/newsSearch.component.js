@@ -17,6 +17,7 @@ export default class NewsSearch extends React.Component {
     this.searchBarId = Utils.generateRandomString(5);
     this.SEARCH_TOPIC = 'SEARCH_BAR_CLICKED_' + this.searchBarId;
     this.searchPage = 1;
+    this.newsService = new NewsService();
   }
 
   componentDidMount() {
@@ -25,9 +26,9 @@ export default class NewsSearch extends React.Component {
 
   searchBarClicked(msg, data) {
     this.setState({ showNewsPanel: true })
-    NewsService.searchNews({ q: data.text })
+    this.newsService.searchNews({ q: data.text })
       .then(response => {
-        this.setState({ searchResults: response.data, newsPanelLoading: false })
+        this.setState({ searchResults: response, newsPanelLoading: false })
       });
   }
 

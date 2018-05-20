@@ -10,6 +10,11 @@ export const HEADER_LINKS = [
     display: 'News Search',
     address: '/search',
     uniqueKey: 'Header_' + Utils.generateRandomString(5)
+  },
+  {
+    display: 'Sources',
+    address: '/sources',
+    uniqueKey: 'Header_' + Utils.generateRandomString(5)
   }
 ];
 
