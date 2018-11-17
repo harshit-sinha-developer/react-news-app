@@ -5,7 +5,8 @@ const SERVICES = {
   APIS: {
     NEWS: {
       HEADLINES: '/v2/top-headlines',
-      SEARCH: '/v2/everything'
+      SEARCH: '/v2/everything',
+      SOURCES: '/v2/sources'
     }
   }
 };

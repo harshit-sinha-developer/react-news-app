@@ -67,6 +67,44 @@ export default class NewsService {
         return Promise.resolve(this.metadata.getMainDataAll());
       })
   }
+
+  fetchNewsSources(options) {
+    options = options || {};
+    options.language = options.language || 'en';
+
+    if(NewsData.SOURCES && Object.keys(NewsData.SOURCES).length > 0) {
+      return Promise.resolve(NewsData.SOURCES);
+    }
+
+    const requestOpts = {
+      url: SERVICES.NEWS.SOURCES,
+      params: options,
+      headers: {
+        Authorization: `Bearer ${NEWS_API_KEY}`
+      }
+    }
+
+    return axios(requestOpts)
+      .then(results => {
+        console.log("results", results)
+        if(!results.data || !results.data.sources) {
+          return Promise.resolve({});
+        }
+
+        const SOURCES = {};
+        const newsData = results.data;
+        
+        newsData.sources.forEach(result => {
+          SOURCES[result.id] = {
+            SOURCE_NAME: result.name,
+            SOURCE_ID: result.id,
+            KEY: "SOURCE_" + Utils.generateRandomString(5)
+          };
+        });
+        NewsData.SOURCES = SOURCES;
+        return SOURCES;
+      });
+  }
 }
 
 class NewsData {
@@ -157,3 +195,5 @@ NewsData.DEFAULT_DATA = (function () {
     }
   }
 })();
+
+NewsData.SOURCES = null;

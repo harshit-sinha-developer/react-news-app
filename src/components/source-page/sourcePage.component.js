@@ -12,7 +12,8 @@ export default class SourcePage extends React.Component {
     this.state = {
       newsData: [],
       showNewsPanel: false,
-      newsPanelLoading: true
+      newsPanelLoading: true,
+      sourceList: SOURCES_LIST
     };
     this.sourceListSubscription = null;
     this.newsService = new NewsService();
@@ -20,6 +21,12 @@ export default class SourcePage extends React.Component {
 
   componentDidMount() {
     this.sourceListSubscription = PubSub.subscribe(SOURCE_LIST_ITEM_EVENT, this.sourceListItemClicked.bind(this));
+
+    this.newsService.fetchNewsSources()
+      .then(sourceData => {
+        console.log("**** sourceData", sourceData)
+        this.setState({ sourceList: sourceData });
+      });
   }
 
   componentWillUnmount() {
@@ -50,7 +57,7 @@ export default class SourcePage extends React.Component {
   render() {
     return (
       <div className='container'>
-        <SourceList list={SOURCES_LIST} title={SOURCES_DROPDOWN_TITLE} />
+        <SourceList list={this.state.sourceList} title={SOURCES_DROPDOWN_TITLE} />
         {this.state.showNewsPanel ? <NewsPanel newsData={this.state.newsData} isLoading={this.state.newsPanelLoading} /> : null}
       </div>
     );
