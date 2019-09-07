@@ -19,7 +19,7 @@ export default class SourceList extends React.Component {
   }
 
   getNewsSourceElements(SOURCE_LIST) {
-    let sourceElementList = Object.keys(SOURCE_LIST).map(sourceName => {
+    let sourceElementList = sourceElementList = Object.keys(SOURCE_LIST).map(sourceName => {
       let sourceObj = SOURCE_LIST[sourceName];
       return (
         <li onClick={e => this.sourceListItemClicked(e, { dataKey: sourceObj.SOURCE_ID })}>
