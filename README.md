@@ -1,6 +1,16 @@
 # News App
-A news web app based in react
+A news web app based in react<br/>
 
+## Screenshots
+
+### Main Page
+![Alt text](https://raw.githubusercontent.com/harshit-sinha-developer/react-news-app/master/assets/news-room.gif)
+
+### News Search Page
+![Alt text](https://raw.githubusercontent.com/harshit-sinha-developer/react-news-app/master/assets/news-room-search.gif)
+
+### News Source Page
+![Alt text](https://raw.githubusercontent.com/harshit-sinha-developer/react-news-app/master/assets/news-room-sources.gif)
 
 ## Contributing
 ### Prerequisites
